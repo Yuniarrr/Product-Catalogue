@@ -1,31 +1,107 @@
+## PRODUCT
 ### GET
-// Get all the users
-GET http://localhost:4000/users
+// Get all the products
+GET http://localhost:4000/products
 
 ### GET
-// Get single user by id
-GET http://localhost:4000/users/1
+// Get all the products with detail
+GET http://localhost:4000/products/detail?sort=harga
+
+### GET
+// Get single product by id
+GET http://localhost:4000/products/1
 
 ### POST
-// Create a new user
-POST http://localhost:4000/users
+// Create a new product
+POST http://localhost:4000/products
 Content-Type: application/json
 
 {
-  "name": "john",
-  "email": "john@gmail.com"
+  "name": "buku",
+  "price": 1000,
+  "category_id": 1
 }
 
 ### PATCH
-// Update a user
-PATCH http://localhost:4000/users/1
+// Update a product
+PATCH http://localhost:4000/products/10
 Content-Type: application/json
 
 {
-  "name": "newjohn",
-  "email": "john@gmail.com"
+  "name": "buku baruuu"
 }
 
 ### DELETE
 // Delete a user
-DELETE http://localhost:4000/users/1
+DELETE http://localhost:4000/products/7
+
+
+
+## CATEGORIES
+### GET
+// Get all the categories
+GET http://localhost:4000/categories
+
+### GET
+// Get single product by id
+GET http://localhost:4000/categories/1
+
+### POST
+// Create a new product
+POST http://localhost:4000/categories
+Content-Type: application/json
+
+{
+  "name": "handphone"
+}
+
+### PATCH
+// Update a product
+PATCH http://localhost:4000/categories/9
+Content-Type: application/json
+
+{
+  "name": "handphone baru"
+}
+
+### DELETE
+// Delete a user
+DELETE http://localhost:4000/categories/9
+
+
+
+## PRODUCT ASSETS
+### GET
+// Get all the product-assets
+GET http://localhost:4000/product-assets
+
+### GET
+// Get all the product-assets with detail
+GET http://localhost:4000/product-assets/detail
+
+### GET
+// Get single product by id
+GET http://localhost:4000/product-assets/1
+
+### POST
+// Create a new product
+POST http://localhost:4000/product-assets
+Content-Type: application/json
+
+{
+  "image": "test",
+  "product_id": 1
+}
+
+### PATCH
+// Update a product
+PATCH http://localhost:4000/product-assets/10
+Content-Type: application/json
+
+{
+  "image": "image baru"
+}
+
+### DELETE
+// Delete a user
+DELETE http://localhost:4000/product-assets/10
