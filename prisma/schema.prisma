@@ -3,18 +3,39 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-model user {
-  id     Int         @id @default(autoincrement())
-  name   String      @db.VarChar(99)
-  email  String      @db.VarChar(99)
-  status user_status
+model Categories {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  created_at DateTime   @default(now())
+  updated_at DateTime   @default(now()) @updatedAt
+  deleted_at DateTime?
+  Products   Products[]
 }
 
-enum user_status {
-  active
-  inactive
+model Products {
+  id    Int    @id @default(autoincrement())
+  name  String
+  slug  String
+  price Float
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @default(now()) @updatedAt
+  deleted_at DateTime?
+
+  category_id    Int
+  Categories     Categories       @relation(fields: [category_id], references: [id])
+  Product_assets Product_assets[]
+}
+
+model Product_assets {
+  id    Int    @id @default(autoincrement())
+  image String
+
+  product_id Int
+  Products   Products @relation(fields: [product_id], references: [id])
 }
