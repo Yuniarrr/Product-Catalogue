@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "0439609b-1d97-49e1-a313-6978eb7c0707",
-		"name": "product-ads",
+		"name": "product-catalogue",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "28599911"
 	},
@@ -154,14 +154,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:4000/products/6",
+							"raw": "localhost:4000/products/8",
 							"host": [
 								"localhost"
 							],
 							"port": "4000",
 							"path": [
 								"products",
-								"6"
+								"8"
 							]
 						}
 					},
@@ -224,14 +224,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:4000/categories/10",
+							"raw": "localhost:4000/categories/1",
 							"host": [
 								"localhost"
 							],
 							"port": "4000",
 							"path": [
 								"categories",
-								"10"
+								"1"
 							]
 						}
 					},
@@ -369,14 +369,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:4000/product-assets/10",
+							"raw": "localhost:4000/product-assets/1",
 							"host": [
 								"localhost"
 							],
 							"port": "4000",
 							"path": [
 								"product-assets",
-								"10"
+								"1"
 							]
 						}
 					},

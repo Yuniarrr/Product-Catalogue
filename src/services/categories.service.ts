@@ -41,6 +41,9 @@ export async function getCategoryById(id: number) {
       where: {
         id: id,
       },
+      include: {
+        Products: true,
+      },
     });
   } catch (error) {
     console.error('Error fetching category in CategoriesService:', error);
