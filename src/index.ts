@@ -10,6 +10,8 @@ app.use('/products', productRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/product-assets', productAssetRoutes);
 
-app.listen(4000, () => {
-  console.log('Express server is running on port 4000');
+const port = process.env.PORT || 4000;
+
+app.listen(port, () => {
+  console.log(`Express server is running on port ${port}`);
 });
