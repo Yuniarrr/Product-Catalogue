@@ -16,6 +16,43 @@ export async function getAllProducts() {
   }
 }
 
+export async function getAllProductsWithDetail() {
+  try {
+    return await prisma.products.findMany({
+      include: {
+        Categories: true,
+        Product_assets: true,
+      },
+    });
+  } catch (error) {
+    console.error('Error fetching products in ProductService:', error);
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error('Error fetching products');
+  }
+}
+
+export async function getAllProductsWithDetailAndOrder() {
+  try {
+    return await prisma.products.findMany({
+      include: {
+        Categories: true,
+        Product_assets: true,
+      },
+      orderBy: {
+        price: 'asc',
+      },
+    });
+  } catch (error) {
+    console.error('Error fetching products in ProductService:', error);
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error('Error fetching products');
+  }
+}
+
 export async function deleteProductById(id: number) {
   try {
     const isProductExist = await getProductById(id);

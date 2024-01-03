@@ -3,6 +3,8 @@ import {
   createProduct,
   deleteProductById,
   getAllProducts,
+  getAllProductsWithDetail,
+  getAllProductsWithDetailAndOrder,
   getProductById,
   updateProductById,
 } from '../services/products.service';
@@ -11,6 +13,22 @@ const productRoutes = express.Router();
 productRoutes.get('/', async (req: Request, res: Response) => {
   try {
     const products = await getAllProducts();
+    return res.json(products);
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+productRoutes.get('/detail', async (req: Request, res: Response) => {
+  try {
+    const harga = req.query.sort === 'harga';
+    let products;
+    if (harga) {
+      products = await getAllProductsWithDetailAndOrder();
+    } else {
+      products = await getAllProductsWithDetail();
+    }
     return res.json(products);
   } catch (error) {
     console.error('Error fetching products:', error);

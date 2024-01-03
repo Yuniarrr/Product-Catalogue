@@ -3,6 +3,7 @@ import {
   createProductAsset,
   deleteProductAssetById,
   getAllProductAssets,
+  getAllProductAssetsWithNameProduct,
   getProductAssetById,
   updateProductAssetById,
 } from '../services/product-assets.service';
@@ -11,6 +12,19 @@ const productAssetRoutes = express.Router();
 productAssetRoutes.get('/', async (req: Request, res: Response) => {
   try {
     const productAssets = await getAllProductAssets();
+    return res.json(productAssets);
+  } catch (error) {
+    console.error('Error fetching product-assets:', error);
+    if (error instanceof Error) {
+      return res.status(400).json({ error: error.message });
+    }
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+productAssetRoutes.get('/detail', async (req: Request, res: Response) => {
+  try {
+    const productAssets = await getAllProductAssetsWithNameProduct();
     return res.json(productAssets);
   } catch (error) {
     console.error('Error fetching product-assets:', error);

@@ -18,6 +18,31 @@ export async function getAllProductAssets() {
   }
 }
 
+export async function getAllProductAssetsWithNameProduct() {
+  try {
+    return await prisma.product_assets.findMany({
+      include: {
+        Products: {
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+          },
+        },
+      },
+    });
+  } catch (error) {
+    console.error(
+      'Error fetching product-assets in ProductAssetsService:',
+      error
+    );
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error('Error fetching product-assets');
+  }
+}
+
 export async function deleteProductAssetById(id: number) {
   try {
     const isProductAssetExist = await getProductAssetById(id);
